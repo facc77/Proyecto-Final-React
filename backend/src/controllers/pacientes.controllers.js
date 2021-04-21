@@ -13,7 +13,7 @@ pacientesCtrl.createPaciente = async (req, res) => {
     usuario: usuario,
     email: email,
     contrasena: contrasena,
-    permiso: "falso",
+    permiso: "denegado",
   });
   await newPaciente.save();
   res.json({ message: "paciente registrado" });

@@ -3,8 +3,12 @@ const medicosCtrl = {};
 const Medico = require("../models/Medico");
 
 medicosCtrl.getMedicos = async (req, res) => {
-  const medicos = await Medico.find();
-  res.json(medicos);
+  try {
+    const medicos = await Medico.find();
+    res.json(medicos);
+  } catch (err) {
+    console.log(`el error es ${err}`);
+  }
 };
 
 medicosCtrl.createMedico = async (req, res) => {
@@ -22,7 +26,7 @@ medicosCtrl.createMedico = async (req, res) => {
     usuario,
     email,
     contrasena,
-    permiso: "falso",
+    permiso: "denegado",
     nombreCompleto,
     disciplina,
     sucursal,
@@ -33,8 +37,14 @@ medicosCtrl.createMedico = async (req, res) => {
 };
 
 medicosCtrl.getMedico = async (req, res) => {
-  const medico = await Medico.findById(req.params.id);
-  res.json(medico);
+  if (req.params.id != 0) {
+    try {
+      const medico = await Medico.findById(req.params.id);
+      res.json(medico);
+    } catch (err) {
+      console.log(`el error es ${err}`);
+    }
+  }
 };
 medicosCtrl.updateMedico = async (req, res) => {
   const {
