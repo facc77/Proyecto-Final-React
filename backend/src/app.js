@@ -14,5 +14,6 @@ app.use(express.json());
 app.use("/api/pacientes", require("./routes/pacientes.js"));
 app.use("/api/medicos", require("./routes/medicos.js"));
 app.use("/api/turnos", require("./routes/turnos.js"));
+app.use("/api/usuarioLog", require("./routes/usuarioLog.js"));
 
 module.exports = app;
