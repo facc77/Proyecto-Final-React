@@ -3,9 +3,9 @@ const router = Router();
 
 const {
   getUsuarioLog,
-  postUsuarioLog,
+  putUsuarioLog,
 } = require("../controllers/usuarioLog.controllers");
 
-router.route("/").get(getUsuarioLog).post(postUsuarioLog);
+router.route("/:id").get(getUsuarioLog).put(putUsuarioLog);
 
 module.exports = router;

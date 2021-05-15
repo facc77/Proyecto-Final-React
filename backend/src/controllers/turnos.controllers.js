@@ -15,6 +15,7 @@ turnosCtrl.createTurno = async (req, res) => {
     fecha,
     hora,
     especialidad,
+    usuarioMedico,
   } = req.body;
   const newTurno = new Turno({
     paciente,
@@ -23,6 +24,7 @@ turnosCtrl.createTurno = async (req, res) => {
     fecha,
     hora,
     especialidad,
+    usuarioMedico,
   });
   await newTurno.save();
   res.json({ message: "turno registrado" });
@@ -40,6 +42,7 @@ turnosCtrl.updateTurno = async (req, res) => {
     fecha,
     hora,
     especialidad,
+    usuarioMedico,
   } = req.body;
   await Turno.findByIdAndUpdate(req.params.id, {
     paciente,
@@ -48,6 +51,7 @@ turnosCtrl.updateTurno = async (req, res) => {
     fecha,
     hora,
     especialidad,
+    usuarioMedico,
   });
   res.json({ info: "turno updated" });
 };

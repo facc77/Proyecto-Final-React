@@ -8,6 +8,7 @@ const turnoSchema = new Schema(
     especialidad: String,
     fecha: String,
     hora: String,
+    usuarioMedico: String,
   },
   {
     timestamps: true,

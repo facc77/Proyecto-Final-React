@@ -1,19 +1,17 @@
-const UsuarioLogCtrl = {};
+const usuarioLogCtrl = {};
 
-const UsuarioLog = require("../models/usuarioLog");
+const UsuarioLog = require("../models/UsuarioLog");
 
-UsuarioLogCtrl.getUsuarioLog = async (req, res) => {
-  const usuarioLog = await UsuarioLog.find();
+usuarioLogCtrl.getUsuarioLog = async (req, res) => {
+  const usuarioLog = await UsuarioLog.findById(req.params.id);
   res.json(usuarioLog);
 };
-
-UsuarioLogCtrl.postUsuarioLog = async (req, res) => {
+usuarioLogCtrl.putUsuarioLog = async (req, res) => {
   const { usuario } = req.body;
-  const newUsuarioLog = new UsuarioLog({
-    usuario: usuario,
+  await UsuarioLog.findByIdAndUpdate(req.params.id, {
+    usuario,
   });
-  await UsuarioLog.save();
-  res.json({ message: "usuario logueado" });
+  res.json({ info: "info updated" });
 };
 
-module.exports = UsuarioLogCtrl;
+module.exports = usuarioLogCtrl;
